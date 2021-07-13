@@ -9,3 +9,4 @@ EXPOSE 5000
 ENTRYPOINT ["python", "./student_age.py"]
 
 #docker run --name monapi -p 8080:5000 -d -v /root/Mini-Projet-Docker/simple_api/student_age.json:/data/student_age.json mon_api
+#docker run --name monapi -p 8080:5000 -d -v /home/admin/Mini-Projet-Docker/simple_api/student_age.json:/data/student_age.json mon_api

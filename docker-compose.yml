@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  website:
+    image: php:apache
+    depends_on:
+      - api_pozos
+    environment:
+      - PASSWORD=admin
+      - USERNAME=admin
+    ports:
+      - "8081:80"
+    volumes:
+      - ./website:/var/www/html
+  
+
+  api_pozos:
+    image: mon_api
+    volumes:
+      - /home/admin/Mini-Projet-Docker/simple_api/student_age.json:/data/student_age.json
+    ports:
+      - "8080:5000"
+ 
+      
+     
