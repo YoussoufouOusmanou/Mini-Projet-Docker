@@ -2,23 +2,29 @@ version: "3.9"
 services:
   website:
     image: php:apache
+    hostname: pozos_website
     depends_on:
       - api_pozos
     environment:
-      - PASSWORD=admin
-      - USERNAME=admin
+      - PASSWORD=python
+      - USERNAME=toto
     ports:
-      - "8081:80"
+      - "8000:80"
     volumes:
       - ./website:/var/www/html
-  
+    networks:
+      - shared_network
 
   api_pozos:
     image: mon_api
+    hostname: pozos_api
     volumes:
-      - /home/admin/Mini-Projet-Docker/simple_api/student_age.json:/data/student_age.json
+      - ./simple_api/student_age.json:/data/student_age.json
     ports:
-      - "8080:5000"
- 
-      
-     
+      - "8080:5000" 
+    networks:
+      - shared_network
+
+networks:
+      shared_network:
+         
